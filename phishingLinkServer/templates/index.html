@@ -1,0 +1,643 @@
+{% comment %} <!DOCTYPE html>
+{% load static %}
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Index page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href = "{% static 'styles.css' %}" rel = "stylesheet" type = "text/css">
+
+    </head>
+    <body>
+        <form action = "" method = "POST">
+            {% csrf_token %}
+        <div class = "url-div">
+        <input class = "url-input" type = "text" name = "urlToBeTested" placeholder = "Enter your URL here">
+        <input class = "submit" type = "submit" value = "Search for phishing">
+
+        {% if resultFound %}
+            {% if boolResult %}
+            <p>The given URL is detected to be a Phishing URL</p>
+            {% else %}
+            <p>The given URL is detected to be a Legitimate URL</p>
+            {% endif %}
+        {% endif %}
+
+        </div>
+        </form>
+        <script src="" async defer></script>
+    </body>
+</html> {% endcomment %}
+<html>
+{% load static %}
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0a141e, #1a2a33, #223a4c);
+            color: white;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            float: left;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity:0.6;
+        }
+
+        .title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+        }
+
+        .title h1 {
+            margin-left: 10px;
+            margin-top: 30px;
+            font-size: 30px;
+            float: left;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .title h1:hover {
+            color : #50c2ff;
+            cursor: pointer;
+        }
+
+        .nav {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .nav li {
+            margin-left: 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav a:hover {
+            color: #00ccff;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #00ccff;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .home {
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .home-content {
+            width: 50%;
+            text-align: center;
+        }
+
+        .home-image {
+            width: 50%;
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+        .home-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            opacity: 0.5;
+
+            animation-name: zoom;
+
+            animation-duration: 8s;
+
+            animation-iteration-count: infinite;
+
+        }
+
+        @keyframes zoom {
+
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+        .home h1 {
+
+            font-size: 40px;
+
+            margin-bottom: 20px;
+
+            font-family: 'Courier New', Courier, monospace;
+
+        }
+
+        .home p {
+
+            font-size: 18px;
+
+            line-height: 1.5;
+
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+
+        .scroll-down {
+
+            position: absolute;
+
+            bottom: 20px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+
+
+            background-color: #001f33;
+
+            border-radius: 10px;
+
+            width: 120px;
+
+            height: 40px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+
+            cursor: pointer;
+
+            animation-name: bounce;
+
+            animation-duration: 2s;
+
+            animation-iteration-count: infinite;
+
+
+
+        }
+
+        .scroll-down:hover {
+
+
+
+            transform: translateX(-50%) scale(1.1);
+
+
+
+        }
+
+        @keyframes bounce {
+
+
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+
+
+            50% {
+                transform: translateX(-50%) translateY(-15px);
+            }
+
+
+
+        }
+
+
+
+        .check {
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+
+
+        .check input[type = "text"] {
+
+
+
+            width: 500px;
+
+
+
+            height: 50px;
+
+
+
+            border-radius: 25px;
+
+
+
+            border: none;
+
+
+
+            padding-left: 20px;
+
+
+
+            background-color: #f2f2f2;
+
+            color: #1a2a33;
+
+            font-weight: bold;
+            font-size: 0.9rem;
+
+
+
+        }
+
+        ::placeholder {
+            color : rgba(41, 41, 41, 0.7);
+            font-weight: bold;
+        }
+
+
+
+        .check input[type = "submit"] {
+
+            width: 200px;
+
+
+
+            height: 40px;
+
+
+
+            border-radius: 20px;
+
+
+
+            border: none;
+
+
+
+            background-color: #00ccff;
+
+
+
+            color: white;
+
+
+
+            font-weight: bold;
+
+
+
+            margin-top: 30px;
+            margin-left:30%;
+
+
+
+            cursor: pointer;
+
+
+
+            transition: all 0.3s ease-in-out;
+
+
+
+        }
+
+
+
+        .check input[type = "submit"]:hover {
+
+
+
+            background-color: #0099cc;
+
+
+
+            transform: scale(1.1);
+
+
+
+        }
+
+
+
+        .footer {
+
+
+
+            height: auto;
+
+            padding-top: 20px;
+
+            padding-bottom: 20px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background-color: #001f33;
+
+            flex-wrap: wrap;
+
+            font-family :'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+        }
+
+
+
+        .footer p {
+
+            font-size: 18px;
+
+            margin-right: 10px;
+
+            margin-bottom: -10px;
+
+        }
+
+
+
+        .footer span {
+
+            color: #00ccff;
+
+            cursor: pointer;
+
+            transition: text-shadow 0.3s ease-in-out;
+
+            margin-left: 10px;
+
+            margin-right: 10px;
+
+        }
+
+        .footer span:hover {
+
+            text-shadow: 0px 0px 5px #42e6ff;
+
+        }
+
+        .frontend {
+
+            display: flex;
+
+            align-items: center;
+
+            margin-top: 10px;
+
+        }
+
+        .frontend::before {
+
+            width: 20px;
+
+            height: 20px;
+
+            border-radius: 50%;
+
+            background-color: #00ccff;
+
+            margin-right: 10px;
+
+        }
+
+        .backend {
+
+            display: flex;
+
+            align-items: center;
+
+            margin-top: 10px;
+
+        }
+
+        .backend::before {
+
+            width: 20px;
+
+            height: 20px;
+
+            border-radius: 50%;
+
+            background-color: #00ccff;
+
+            margin-right: 10px;
+
+        }
+
+        .info {
+
+            width: 50%;
+
+            float:left;
+
+            text-align:justify;
+
+        }
+
+        .info h3 {
+
+            font-size: 24px;
+
+            margin-bottom: 10px;
+
+
+
+        }
+
+        .info p {
+
+            font-size: 16px;
+
+            line-height: 1.5;
+
+            margin-right:100px;
+
+        }
+
+        .team p{
+            margin-bottom:20px;
+        }
+
+        .copy {
+
+            width: 100%;
+
+            text-align: center;
+
+            margin-top: 90px;
+
+        }
+
+        .copy a {
+
+            color: white;
+
+            text-decoration: none;
+
+        }
+
+        .copy a:hover {
+
+            color : #50c2ff;
+        }
+
+        .result {
+            margin-top:40px;
+            font-weight:bold;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-align:center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title">
+        <div>
+            <div class="logo">
+                <img src="https://danusshkumar.github.io/staticfilesforphishinglinkserver/phishing-logo.png" alt="Phishing Scanner+ Logo">
+            </div>
+            <h1>Phishing Scanner <b>+</b></h1>
+        </div>
+        <div>
+            <ul class="nav">
+                <li><a onclick="navScroll('home')">Home</a></li>
+                <li><a onclick = "navScroll('check')" >Check for Phishing</a></li>
+                <li><a onclick = "navScroll('about')" >About Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="home" id="home">
+        <div class="home-content">
+            <h1>Welcome to Phishing Scanner+</h1>
+            <p>Phishing scanner+ determines whether the links are part of a phishing scam or originate from a
+                trustworthy source and cross-references it with a database of known phishing websites and alerts the
+                user.
+                So that you can effectively protect yourself from falling victim to phishing scams and safeguard your
+                personal information from potential threats.</p>
+        </div>
+        <div class="home-image">
+            <img src="https://danusshkumar.github.io/staticfilesforphishinglinkserver/home-image.jpeg" alt="Phishing Image">
+        </div>
+    </div>
+    <div class="scroll-down" onclick="navScroll('check')">
+        Detect here ▼
+    </div>
+    <div class="check" id="check">
+        <form action = "" method = "POST">
+            {% csrf_token %}
+        <input type="text" id="url" name = "urlToBeTested" placeholder="Enter URL here..."><br>
+        <input type = "submit" value = "Check for Phishing"></button>
+        </form>
+
+        <p class = "result">
+        {% if resultFound %}
+        {% if boolResult %}
+        The given URL is detected to be a Phishing URL
+        {% else %}
+        The given URL is detected to be a Legitimate URL
+        {% endif %}
+        <br><br>
+        {{url}}
+      {% endif %}
+        </p>
+    </div>
+    <div class="footer" id="about">
+        <div class="info">
+            <h3>About Us</h3>
+            <p>We are a team of passionate developers who want to make the internet a safer place for everyone. We
+                created Phishing Scanner+ to help users detect and avoid phishing scams that can compromise their
+                personal information and security. Our app uses a machine learning model to analyze the links and
+                compare them with a database of known phishing websites. We also provide useful tips and resources to
+                help users protect themselves from phishing attacks.</p>
+        </div>
+        <div class="team">
+            <p>Designed by</p>
+            <div class="frontend"><span>Danusshkumar, Deepasri</span> (Frontend, API and Deployment)</div>
+            <div class="backend"><span>Kesavarshini, Visagan, Sai Vishwa, Sujitha</span> (Python Model Development)
+            </div>
+        </div>
+        <div class="copy">
+            © 2023 Phishing Scanner+. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of
+                Service</a>
+        </div>
+    </div>
+    <script>
+        
+        function navScroll(id){
+            var scrollSection = document.getElementById(id);
+            scrollSection.scrollIntoView({behavior: "smooth"});
+        }
+    </script>
+</body>
+
+</html>
